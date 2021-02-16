@@ -4,6 +4,14 @@ Expose WireGuard as a SOCKS5 proxy in a Docker container.
 
 ## Usage
 
+1. Install Deps
+
+```bash
+apt-get install wireguard-dkms wireguard-tools linux-headers-$(uname -r)
+```
+
+2. Run Docker
+
 ```bash
 docker run -it --rm --cap-add=NET_ADMIN \
     --name wireguard-socks-proxy \
