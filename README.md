@@ -9,7 +9,7 @@ docker run -it --rm --cap-add=NET_ADMIN \
     --name wireguard-socks-proxy \
     --volume /directory/containing/your/wireguard/conf/file/:/etc/wireguard/:ro \
     -p 1080:1080 \
-    kizzx2/wireguard-socks-proxy
+    ghcr.io/apocalypsor/wireguard-socks
 ```
 
 Then connect to SOCKS proxy through through `127.0.0.1:1080` (or `local.docker:1080` for Mac / docker-machine / etc.). For example:
