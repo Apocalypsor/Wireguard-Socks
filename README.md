@@ -10,14 +10,20 @@ Expose WireGuard as a SOCKS5 proxy in a Docker container.
 apt-get install wireguard-dkms wireguard-tools linux-headers-$(uname -r)
 ```
 
-2. Run Docker
+2. Docker Compose
 
-```bash
-docker run -it --rm --cap-add=NET_ADMIN \
-    --name wireguard-socks-proxy \
-    --volume /directory/containing/your/wireguard/conf/file/:/etc/wireguard/:ro \
-    -p 1080:1080 \
-    ghcr.io/apocalypsor/wireguard-socks
+```yaml
+version: '3'
+
+services:
+  wg:
+    image: ghcr.io/apocalypsor/wireguard-socks
+    container_name: wg
+    tty: true
+    volumes:
+      - ./wireguard:/etc/wireguard/:ro
+    privileged: true
+    restart: unless-stopped
 ```
 
 Then connect to SOCKS proxy through through `127.0.0.1:1080` (or `local.docker:1080` for Mac / docker-machine / etc.). For example:
