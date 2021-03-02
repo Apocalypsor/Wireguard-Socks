@@ -7,6 +7,8 @@ Expose WireGuard as a SOCKS5 proxy in a Docker container.
 1. Install Deps
 
 ```bash
+sudo sh -c "echo 'deb http://deb.debian.org/debian buster-backports main contrib non-free' > /etc/apt/sources.list.d/buster-backports.list"
+apt update
 apt-get install wireguard-dkms wireguard-tools linux-headers-$(uname -r)
 ```
 
