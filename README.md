@@ -24,11 +24,14 @@ services:
     tty: true
     volumes:
       - ./wireguard:/etc/wireguard/:ro
+    ports:
+      - 1080:1080
+      - 1081:1081
     privileged: true
     restart: unless-stopped
 ```
 
-Then connect to SOCKS proxy through through `127.0.0.1:1080` (or `local.docker:1080` for Mac / docker-machine / etc.). For example:
+Then connect to SOCKS proxy through through `127.0.0.1:1080` or to HTTP proxy through through `127.0.0.1:1081` . For example:
 
 ```bash
 curl --proxy socks5h://127.0.0.1:1080 ipinfo.io
